@@ -51,4 +51,4 @@ var friendsArray = [
   }
 ]
   
-  
+module.exports = {friendsArray:friendsArray};
