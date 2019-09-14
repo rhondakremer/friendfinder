@@ -4,9 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <!-- Bootstrap CDN -->
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>Best Friends Finder</title>
 </head>
 <body>
-    display something
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-4">Find your perfect friend!</h1>
+          <p class="lead">Answer a few questions and you will find your best match!</p>
+          <button type="button" class="btn btn-primary" id="surveyRedirect">Go to survey</button>
+          <script>
+              $("#surveyRedirect").click(function() {
+                location.href = "./survey"
+                });
+          </script>
+        </div>
+      </div>
+      <div id="links" style="margin-left: 9%;">
+        <a href="/api/friends">API Friends List</a> |
+        <a href="https://github.com/rhondakremer/friendfinder">Github Repo</a>
+    </div>
 </body>
 </html>

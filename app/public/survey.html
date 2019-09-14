@@ -1,12 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Bootstrap CDN -->
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'>
     <title>Document</title>
 </head>
+
 <body>
-    this is the survey
+    <div class="container">
+        <form>
+            <div class="form-group">
+                <label for="name">Name (Required)</label>
+                <input type="name" class="form-control" id="name" placeholder="Chatty Kathy" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Link to Photo (Required)</label>
+                <input type="picture" class="form-control" id="picture" placeholder="http://yourimage.com">
+            </div>
+
+            <div class="form-group">
+                <label for="question1">Dogs are the best pet.</label>
+                <select class="form-control" id="question1" placeholder="Select an option">
+                    <option value="" disabled selected>Select your option</option>
+                    <option>1 (Strongly Disagree)</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5 (Strongly Agree)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="question2">I need coffee to start my day.</label>
+                <select class="form-control" id="question2">
+                    <option value="" disabled selected>Select your option</option>
+                    <option>1 (Strongly Disagree)</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5 (Strongly Agree)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="question3">Talking to my mom every day is important.</label>
+                <select class="form-control" id="question3">
+                    <option value="" disabled selected>Select your option</option>
+                    <option>1 (Strongly Disagree)</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5 (Strongly Agree)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="question4">I am a morning person.</label>
+                <select class="form-control" id="question4">
+                    <option value="" disabled selected>Select your option</option>
+                    <option>1 (Strongly Disagree)</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5 (Strongly Agree)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="question5">I prefer being inside to being outside.</label>
+                <select class="form-control" id="question5">
+                    <option value="" disabled selected>Select your option</option>
+                    <option>1 (Strongly Disagree)</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5 (Strongly Agree)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="question6">I prefer beer to wine.</label>
+                <select class="form-control" id="question6">
+                    <option value="" disabled selected>Select your option</option>
+                    <option>1 (Strongly Disagree)</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5 (Strongly Agree)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="question7">Music is an important part of my life.</label>
+                <select class="form-control" id="question7">
+                    <option value="" disabled selected>Select your option</option>
+                    <option>1 (Strongly Disagree)</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5 (Strongly Agree)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="question8">I prefer hot weather to cold.</label>
+                <select class="form-control" id="question8">
+                    <option value="" disabled selected>Select your option</option>
+                    <option>1 (Strongly Disagree)</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5 (Strongly Agree)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="question9">I like cooking more than eating out.</label>
+                <select class="form-control" id="question9">
+                    <option value="" disabled selected>Select your option</option>
+                    <option>1 (Strongly Disagree)</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5 (Strongly Agree)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="question10">Taco Bell is delicious.</label>
+                <select class="form-control" id="question10">
+                    <option value="" disabled selected>Select your option</option>
+                    <option>1 (Strongly Disagree)</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5 (Strongly Agree)</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Find your friend!</button>
+        </form>
+    </div>
 </body>
+
 </html>
