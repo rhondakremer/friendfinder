@@ -1,5 +1,5 @@
 // LOAD DATA
-var friendsData = require("../data/friends.js");
+var friendsData = require("../data/friends");
 
 
 //routing
@@ -12,7 +12,7 @@ module.exports = function (app) {
 
     // API POST Requests
     app.post("/api/friends", function (req, res) {
-
+        console.log(req.body);
         // code to do matching
         var bestMatch = {
             name: "",
@@ -25,29 +25,34 @@ module.exports = function (app) {
 
         var totalDifference;
 
-        for (let i = 0; i < friendsArray.length; i++) {
-            var currentFriend = friendsArray[i];
+        for (let i = 0; i < friendsData.length; i++) {
+            var currentFriend = friendsData[i];
             var totalDifference = 0;
-            //console.log(currentFriend.name)\
+            console.log(currentFriend.name)
             for (let j = 0; j < currentFriend.scores.length; j++) {
                 var currentFriendScore = currentFriend.scores[j];
                 var currentUserScore = userScores[j];
-                 totalDifference +=  Math.abs(parseInt(currentUserScore) - parseInt(currentFriendScore));               
+                //console.log(currentUserScore)
+                 totalDifference +=  Math.abs(parseInt(currentUserScore) - parseInt(currentFriendScore));  
+                            
             }
-
+            console.log(totalDifference)  
+                
             //if the sum of differences is less than the differences of the current "best match"
-            if (totalDifference <= bestMatch.friendDifference) {
+            if (totalDifference <= bestMatch.difference) {
                 //reset the bestMatch to be the new friend
                 bestMatch.name = currentFriend.name;
-                //photo
+                bestMatch.photo = currentFriend.photo;
                 bestMatch.friendDifference = totalDifference;
+                
             }
         }
 
         //push into array
-        friendsArray.push(userData);
+        friendsData.push(userData);
 
         //return a JSON with the user's bestMatch.
+       console.log("your best match is " + bestMatch.name)
        res.json(bestMatch);
        
     });
