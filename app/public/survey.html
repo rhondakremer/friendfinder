@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Bootstrap CDN -->
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'>
+    <link rel='stylesheet' type="text/css" href='./style.css'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <title>Document</title>
 </head>
@@ -26,7 +27,7 @@
             <div class="form-group">
                 <label for="question1">Dogs are the best pet.</label>
                 <select class="form-control" id="question1" placeholder="Select an option">
-                    <option value="" disabled selected>Select your option</option>
+                    <option value="empty">Select your option</option>
                     <option value="1">1 (Strongly Disagree)</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -37,7 +38,7 @@
             <div class="form-group">
                 <label for="question2">I need coffee to start my day.</label>
                 <select class="form-control" id="question2">
-                    <option value="" disabled selected>Select your option</option>
+                    <option value="empty">Select your option</option>
                     <option value="1">1 (Strongly Disagree)</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -48,7 +49,7 @@
             <div class="form-group">
                 <label for="question3">Talking to my mom every day is important.</label>
                 <select class="form-control" id="question3">
-                    <option value="" disabled selected>Select your option</option>
+                    <option value="empty">Select your option</option>
                     <option value="1">1 (Strongly Disagree)</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -59,7 +60,7 @@
             <div class="form-group">
                 <label for="question4">I am a morning person.</label>
                 <select class="form-control" id="question4">
-                    <option value="" disabled selected>Select your option</option>
+                    <option value="empty">Select your option</option>
                     <option value="1">1 (Strongly Disagree)</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -70,7 +71,7 @@
             <div class="form-group">
                 <label for="question5">I prefer being inside to being outside.</label>
                 <select class="form-control" id="question5">
-                    <option value="" disabled selected>Select your option</option>
+                    <option value="empty">Select your option</option>
                     <option value="1">1 (Strongly Disagree)</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -81,7 +82,7 @@
             <div class="form-group">
                 <label for="question6">I prefer beer to wine.</label>
                 <select class="form-control" id="question6">
-                    <option value="" disabled selected>Select your option</option>
+                    <option value="empty">Select your option</option>
                     <option value="1">1 (Strongly Disagree)</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -92,7 +93,7 @@
             <div class="form-group">
                 <label for="question7">Music is an important part of my life.</label>
                 <select class="form-control" id="question7">
-                    <option value="" disabled selected>Select your option</option>
+                    <option value="empty">Select your option</option>
                     <option value="1">1 (Strongly Disagree)</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -103,7 +104,7 @@
             <div class="form-group">
                 <label for="question8">I prefer hot weather to cold.</label>
                 <select class="form-control" id="question8">
-                    <option value="" disabled selected>Select your option</option>
+                    <option value="empty">Select your option</option>
                     <option value="1">1 (Strongly Disagree)</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -114,7 +115,7 @@
             <div class="form-group">
                 <label for="question9">I like cooking more than eating out.</label>
                 <select class="form-control" id="question9">
-                    <option value="" disabled selected>Select your option</option>
+                    <option value="empty">Select your option</option>
                     <option value="1">1 (Strongly Disagree)</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -125,7 +126,7 @@
             <div class="form-group">
                 <label for="question10">Taco Bell is delicious.</label>
                 <select class="form-control" id="question10">
-                    <option value="" disabled selected>Select your option</option>
+                    <option value="empty">Select your option</option>
                     <option value="1">1 (Strongly Disagree)</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -135,6 +136,14 @@
             </div>
             <button type="submit" class="btn btn-primary" id="submit">Find your friend!</button>
         </form>
+        <div id="myModal1" class="modal">
+            <div class="modal-content">
+                <span class="close">x</span>
+                <p>Your friend match is: </p>
+                <p id="friendName"></p>
+                <img src="#" id="friendPhoto" style="width:30%;">
+            </div>
+        </div>
     </div>
 
 
@@ -144,44 +153,67 @@
 </html>
 
 <script type="text/javascript">
-	$("#submit").on("click", function(event) {
+    $("#submit").on("click", function (event) {
         //alert("you pushed submit")
-		event.preventDefault();
-		// Form validation
-		var valid = true;
-		if($("#name").val() === "" || $("#photo").val() === "") {
-			valid = false;
-		} else if($("#question1").val() === "empty" || $("#question2").val() === "empty" || $("#question3").val() === "empty" || $("#question4").val() === "empty" || $("#question5").val() === "empty" || $("#question6").val() === "empty" || $("#question7").val() === "empty" || $("#question8").val() === "empty" || $("#question9").val() === "empty" || $("#question10").val() === "empty") {
-			valid = false;
-		}
-		if(valid === true) {
-			var newUser = {
-				name: $("#name").val().trim(),
-				photo: $("#picture").val().trim(),
-				scores: [
-					$("#question1").val(),
-					$("#question2").val(),
-					$("#question3").val(),
-					$("#question4").val(),
-					$("#question5").val(),
-					$("#question6").val(),
-					$("#question7").val(),
-					$("#question8").val(),
-					$("#question9").val(),
-					$("#question10").val()
-				]
-			};
-			var currentURL = window.location.origin;
-			// Ajax call for receiving response after POST req
-			$.post(currentURL + "/api/friends", newUser, function(data) {
-                alert("your best match is " + data.name)
-				$("#bestFriend").text(data.name);
-				$("#bestFriendPhoto").attr("src", data.photo);
-				$("#bestFriendModal").modal("toggle");
-			});
-		} else {
-			// If a required field is missing, show alert
-			alert("Survey is incomplete!");
-		}
-	});
+        event.preventDefault();
+        // Form validation
+        var valid = true;
+        if ($("#name").val() === "" || $("#photo").val() === "") {
+            valid = false;
+        } else if ($("#question1").val() === "empty" || $("#question2").val() === "empty" || $("#question3").val() === "empty" || $("#question4").val() === "empty" || $("#question5").val() === "empty" || $("#question6").val() === "empty" || $("#question7").val() === "empty" || $("#question8").val() === "empty" || $("#question9").val() === "empty" || $("#question10").val() === "empty") {
+            valid = false;
+        }
+        if (valid === true) {
+            var newUser = {
+                name: $("#name").val().trim(),
+                photo: $("#picture").val().trim(),
+                scores: [
+                    $("#question1").val(),
+                    $("#question2").val(),
+                    $("#question3").val(),
+                    $("#question4").val(),
+                    $("#question5").val(),
+                    $("#question6").val(),
+                    $("#question7").val(),
+                    $("#question8").val(),
+                    $("#question9").val(),
+                    $("#question10").val()
+                ]
+            };
+            var currentURL = window.location.origin;
+            // Ajax call for receiving response after POST req
+            $.post(currentURL + "/api/friends", newUser, function (data) {
+                $("#friendName").text(data.name);
+                $("#friendPhoto").attr("src", data.photo);
+                $("#myModal1").css("display", "block");
+
+            });
+        } else {
+            // If a required field is missing, show alert
+            alert("Survey is incomplete!");
+        }
+    });
+
+
+
+//Logic for modal
+var modal = $(".modal");
+    var span = document.getElementsByClassName("close");
+    // When the user clicks on <span> (x), close the modal
+    span[0].onclick = function () {
+        $(".modal").css("display", "none");
+        window.location.replace("/");
+    };
+    span[1].onclick = function () {
+        $(".modal").css("display", "none");
+    };
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal[0]) {
+            $(".modal").css("display", "none");
+        } else if (event.target == modal[1]) {
+            $(".modal").css("display", "none");
+        }
+    };
+
 </script>

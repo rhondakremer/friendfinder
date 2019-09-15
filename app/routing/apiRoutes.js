@@ -17,7 +17,7 @@ module.exports = function (app) {
         var bestMatch = {
             name: "",
             photo: "",
-            difference: Infinity
+            difference: 40
         };
 
         var userData =  req.body;
@@ -28,7 +28,7 @@ module.exports = function (app) {
         for (let i = 0; i < friendsData.length; i++) {
             var currentFriend = friendsData[i];
             var totalDifference = 0;
-            console.log(currentFriend.name)
+            //console.log(currentFriend.name)
             for (let j = 0; j < currentFriend.scores.length; j++) {
                 var currentFriendScore = currentFriend.scores[j];
                 var currentUserScore = userScores[j];
@@ -36,15 +36,15 @@ module.exports = function (app) {
                  totalDifference +=  Math.abs(parseInt(currentUserScore) - parseInt(currentFriendScore));  
                             
             }
-            console.log(totalDifference)  
+            //console.log(totalDifference)  
                 
             //if the sum of differences is less than the differences of the current "best match"
-            if (totalDifference <= bestMatch.difference) {
+            if (totalDifference < bestMatch.difference) {
                 //reset the bestMatch to be the new friend
                 bestMatch.name = currentFriend.name;
                 bestMatch.photo = currentFriend.photo;
-                bestMatch.friendDifference = totalDifference;
-                
+                bestMatch.difference = totalDifference;
+                console.log(bestMatch)
             }
         }
 
