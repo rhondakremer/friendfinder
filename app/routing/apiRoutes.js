@@ -1,7 +1,6 @@
 // LOAD DATA
 var friendsData = require("../data/friends");
 
-
 //routing
 module.exports = function (app) {
 

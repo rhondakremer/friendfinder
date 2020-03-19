@@ -1,6 +1,5 @@
 //dependencies
 var express = require("express");
-var path = require("path")
 
 //express configuration
 var app = express();

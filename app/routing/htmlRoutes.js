@@ -1,7 +1,7 @@
 var path = require("path")
 
-// LOAD DATA
-var friendsData = require("../data/friends.js");
+// // LOAD DATA
+// var friendsData = require("../data/friends.js");
 
 
 //routing
