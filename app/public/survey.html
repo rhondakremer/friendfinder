@@ -156,16 +156,7 @@
         event.preventDefault();
         // Form validation
         var valid = true;
-        if ($("#name").val() === "" || $("#photo").val() === "") {
-            valid = false;
-        } else if ($("#question1").val() === "empty" || $("#question2").val() === "empty" || $("#question3").val() === "empty" || $("#question4").val() === "empty" || $("#question5").val() === "empty" || $("#question6").val() === "empty" || $("#question7").val() === "empty" || $("#question8").val() === "empty" || $("#question9").val() === "empty" || $("#question10").val() === "empty") {
-            valid = false;
-        }
-        if (valid === true) {
-            var newUser = {
-                name: $("#name").val().trim(),
-                photo: $("#picture").val().trim(),
-                scores: [
+        let scores = [
                     $("#question1").val(),
                     $("#question2").val(),
                     $("#question3").val(),
@@ -177,6 +168,18 @@
                     $("#question9").val(),
                     $("#question10").val()
                 ]
+            console.log(scores)
+        if ($("#name").val() === "" || $("#photo").val() === "") {
+            valid = false;
+        } 
+        else if (scores.indexOf("empty") !== -1) {
+            valid = false;
+        }
+        if (valid === true) {
+            var newUser = {
+                name: $("#name").val().trim(),
+                photo: $("#picture").val().trim(),
+                scores: scores
             };
             var currentURL = window.location.origin;
             // Ajax call for receiving response after POST req
@@ -192,8 +195,6 @@
         }
     });
 
-
-
 //Logic for modal
 var modal = $(".modal");
     var span = document.getElementsByClassName("close");
@@ -202,10 +203,6 @@ var modal = $(".modal");
         $(".modal").css("display", "none");
         window.location.replace("/");
     };
-    // span[1].onclick = function () {
-    //     $(".modal").css("display", "none");
-    // };
-    // When the user clicks anywhere outside of the modal, close it
     window.onclick = function (event) {
         if (event.target == modal[0]) {
             $(".modal").css("display", "none");
